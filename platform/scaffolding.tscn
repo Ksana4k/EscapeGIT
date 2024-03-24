@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqa0yratoiejo"]
+
+[ext_resource type="PackedScene" uid="uid://kxjhuuul3pxp" path="res://platform/one_way3.tscn" id="1_x7pk0"]
+
+[node name="Scaffolding" type="Node2D"]
+
+[node name="OneWay3" parent="." instance=ExtResource("1_x7pk0")]
+
+[node name="OneWay4" parent="." instance=ExtResource("1_x7pk0")]
+position = Vector2(0, -44)
+
+[node name="OneWay5" parent="." instance=ExtResource("1_x7pk0")]
+position = Vector2(0, -88)

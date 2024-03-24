@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://drp31q8ro0wim"]
+
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_qxwit"]
+[ext_resource type="Texture2D" uid="uid://dbplbqikv6x2p" path="res://ui/ruincitybg.png" id="2_6mkyw"]
+
+[sub_resource type="SystemFont" id="SystemFont_pkt6v"]
+font_names = PackedStringArray("Goudy Old Style")
+
+[sub_resource type="SystemFont" id="SystemFont_tan6m"]
+font_names = PackedStringArray("Goudy Old Style")
+
+[sub_resource type="SystemFont" id="SystemFont_baa5w"]
+font_names = PackedStringArray("Goudy Old Style")
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qxwit")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6mkyw")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="seperator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = SubResource("SystemFont_pkt6v")
+theme_override_font_sizes/font_size = 64
+text = "Escape."
+horizontal_alignment = 1
+
+[node name="play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_tan6m")
+text = "START"
+
+[node name="quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_baa5w")
+text = "QUIT"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]

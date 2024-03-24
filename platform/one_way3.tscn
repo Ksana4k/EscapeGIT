@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://kxjhuuul3pxp"]
+
+[ext_resource type="Texture2D" uid="uid://oi0uha802fwm" path="res://platform/CROPPEDTILESET/wood3.png" id="1_yelp4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3k3p"]
+size = Vector2(124, 6)
+
+[node name="OneWay3" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yelp4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_q3k3p")
+one_way_collision = true

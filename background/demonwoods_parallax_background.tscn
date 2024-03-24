@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdhthaw8jrvmq"]
+
+[ext_resource type="Texture2D" uid="uid://cb7kwcch84glr" path="res://background/demonwoods_img/parallax-demon-woods-bg.png" id="1_0vu2y"]
+[ext_resource type="Texture2D" uid="uid://bgsdn8c7jcll5" path="res://background/demonwoods_img/parallax-demon-woods-far-trees.png" id="2_ah52v"]
+[ext_resource type="Texture2D" uid="uid://umge6c5lw2ma" path="res://background/demonwoods_img/parallax-demon-woods-mid-trees.png" id="3_frr62"]
+[ext_resource type="Texture2D" uid="uid://drtvoivy3fbsn" path="res://background/demonwoods_img/parallax-demon-woods-close-trees.png" id="4_165gd"]
+[ext_resource type="Texture2D" uid="uid://br0hoobdbbi3m" path="res://background/demonwoods_img/pixil-frame.png" id="5_gpkuo"]
+
+[node name="WoodsParallaxBackground" type="ParallaxBackground"]
+offset = Vector2(0, -178)
+transform = Transform2D(1, 0, 0, 1, 0, -178)
+
+[node name="BackgroundRed" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(720, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BackgroundRed"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_0vu2y")
+centered = false
+
+[node name="RedTrees" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(888, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="RedTrees"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_ah52v")
+centered = false
+
+[node name="ShadedTrees" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(888, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ShadedTrees"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_frr62")
+centered = false
+
+[node name="GrayTrees" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.9, 1)
+motion_mirroring = Vector2(888, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="GrayTrees"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_165gd")
+centered = false
+
+[node name="GrayTreesTop" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.9, 1)
+motion_mirroring = Vector2(888, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="GrayTreesTop"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_gpkuo")
+centered = false
+offset = Vector2(0, -272)

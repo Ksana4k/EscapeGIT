@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cij3wu1mwyvno"]
+
+[ext_resource type="PackedScene" uid="uid://bpb1w510arbkr" path="res://background/sky_parallax_background.tscn" id="1_48ss7"]
+
+[node name="SkyParallaxBackground" instance=ExtResource("1_48ss7")]
+
+[node name="Sprite2D" parent="BG" index="0"]
+modulate = Color(0.592157, 0.211765, 0.184314, 1)
+
+[node name="Sprite2D" parent="BG2" index="0"]
+modulate = Color(0.592157, 0.211765, 0.184314, 1)
+
+[node name="Sprite2D" parent="Cloud" index="0"]
+modulate = Color(0.592157, 0.211765, 0.184314, 1)
+
+[node name="Sprite2D" parent="Cloud2" index="0"]
+modulate = Color(0.592157, 0.211765, 0.184314, 1)
+
+[node name="Sprite2D" parent="Cloud3" index="0"]
+modulate = Color(0.592157, 0.211765, 0.184314, 1)
+
+[node name="Sprite2D" parent="Cloud4" index="0"]
+modulate = Color(0.592157, 0.211765, 0.184314, 1)

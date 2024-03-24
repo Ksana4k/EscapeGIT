@@ -1,0 +1,137 @@
+[gd_scene load_steps=19 format=3 uid="uid://cibocesheexla"]
+
+[ext_resource type="Texture2D" uid="uid://cduspph680fon" path="res://enemies/enemy-death.png" id="1_fwlxw"]
+[ext_resource type="Texture2D" uid="uid://bm66i12h1ngd1" path="res://enemies/zombie/ZombieTileset.png" id="2_47rve"]
+[ext_resource type="Script" path="res://enemies/enemy_death_effect.gd" id="2_osrws"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcxgx"]
+atlas = ExtResource("1_fwlxw")
+region = Rect2(0, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhu4f"]
+atlas = ExtResource("1_fwlxw")
+region = Rect2(67, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el7wn"]
+atlas = ExtResource("1_fwlxw")
+region = Rect2(134, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4hso"]
+atlas = ExtResource("1_fwlxw")
+region = Rect2(201, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihsdk"]
+atlas = ExtResource("1_fwlxw")
+region = Rect2(268, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c3sg"]
+atlas = ExtResource("2_47rve")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcity"]
+atlas = ExtResource("2_47rve")
+region = Rect2(32, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sypbo"]
+atlas = ExtResource("2_47rve")
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex5vc"]
+atlas = ExtResource("2_47rve")
+region = Rect2(96, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj2s7"]
+atlas = ExtResource("2_47rve")
+region = Rect2(128, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4smpn"]
+atlas = ExtResource("2_47rve")
+region = Rect2(160, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvcqn"]
+atlas = ExtResource("2_47rve")
+region = Rect2(192, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grdxw"]
+atlas = ExtResource("2_47rve")
+region = Rect2(224, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqwyq"]
+atlas = ExtResource("2_47rve")
+region = Rect2(256, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_soqve"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcxgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhu4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el7wn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4hso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihsdk")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"enemy_death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5c3sg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcity")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sypbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex5vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kj2s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4smpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvcqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grdxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqwyq")
+}],
+"loop": false,
+"name": &"zombie_death",
+"speed": 8.0
+}]
+
+[node name="EnemyDeathEffect" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_soqve")
+animation = &"enemy_death"
+autoplay = "enemy_death"
+script = ExtResource("2_osrws")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

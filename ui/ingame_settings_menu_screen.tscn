@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://yvlekkipkjw1"]
+
+[ext_resource type="PackedScene" uid="uid://cvi0qn6a85dil" path="res://ui/setting_menu_screen.tscn" id="1_22srd"]
+
+[node name="IngameSettingsMenuScreen" instance=ExtResource("1_22srd")]
+
+[node name="MainMenuButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" index="2"]
+text = "RETURN"
