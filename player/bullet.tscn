@@ -30,7 +30,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ohmxo"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ovpni"]
 radius = 3.0
 
 [node name="bullet" type="AnimatedSprite2D"]
@@ -40,7 +40,7 @@ frame_progress = 0.973738
 script = ExtResource("2_63y4p")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 autostart = true
 
@@ -49,7 +49,7 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_ohmxo")
+shape = SubResource("CircleShape2D_ovpni")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -27,10 +27,8 @@ func pause_game():
 	var pause_menu_screen_instance = pause_menu_screen.instantiate()
 	get_tree().get_root().add_child(pause_menu_screen_instance)
 
-func continue_game():
-	get_tree().paused = false
-
 func restart_game():
+	continue_game()
 	get_tree().reload_current_scene()
 	full_heal_player()
 
@@ -44,3 +42,6 @@ func game_over():
 
 func full_heal_player():
 	HealthManager.increase_health(3)
+
+func continue_game():
+	get_tree().paused = false

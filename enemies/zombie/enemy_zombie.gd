@@ -37,6 +37,8 @@ func _ready():
 	current_state = State.Idle
 
 func _physics_process(delta : float):
+	if health_amount <= 0:
+		die()
 	enemy_gravity(delta)
 	enemy_idle(delta)
 	enemy_walk(delta)
@@ -106,3 +108,9 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
 		current_state = State.Attack
 		can_walk = false
+
+func die():
+	var enemy_death_effect_instance = enemy_death_effect.instantiate() as Node2D
+	enemy_death_effect_instance.global_position = global_position
+	get_parent().add_child(enemy_death_effect_instance)
+	queue_free()

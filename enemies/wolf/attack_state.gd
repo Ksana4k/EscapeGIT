@@ -2,7 +2,10 @@ extends NodeState
 
 @export var character_body_2d : CharacterBody2D
 @export var animated_sprite_2d : AnimatedSprite2D
+
+
 @export var speed : int 
+@export var jump_height : int = -300
 
 var player : CharacterBody2D
 var max_speed : int
@@ -34,5 +37,3 @@ func enter():
 func exit():
 	pass
 	
-
-

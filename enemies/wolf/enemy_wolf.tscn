@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dfctjgiy0avdc"]
+[gd_scene load_steps=31 format=3 uid="uid://dfctjgiy0avdc"]
 
 [ext_resource type="Texture2D" uid="uid://rrdugl3hk82t" path="res://enemies/wolf/Canine_Black_Full_FX.png" id="1_sonxr"]
 [ext_resource type="Script" path="res://enemies/wolf/enemy_wolf.gd" id="1_wiua2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://enemies/wolf/state_machine_controller.gd" id="3_ip2jh"]
 [ext_resource type="Script" path="res://enemies/wolf/idle_state.gd" id="4_kufk8"]
 [ext_resource type="Script" path="res://enemies/wolf/attack_state.gd" id="5_trwqq"]
+[ext_resource type="AudioStream" uid="uid://bfh0wek42f01n" path="res://audio/dogbark.mp3" id="8_80jef"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_74rqg"]
 atlas = ExtResource("1_sonxr")
@@ -151,18 +152,22 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7wbs"]
-radius = 12.0
+radius = 12.7692
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ufbk"]
-radius = 158.202
+radius = 94.6185
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o8i36"]
-radius = 14.0357
+radius = 19.7936
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iq7ev"]
 
 [node name="EnemyWolf" type="CharacterBody2D" groups=["Enemy"]]
+scale = Vector2(1.3, 1.3)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_wiua2")
+health_amount = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
@@ -171,6 +176,7 @@ animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -0.769231)
 shape = SubResource("CircleShape2D_k7wbs")
 
 [node name="Gravity" type="Node" parent="." node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
@@ -190,13 +196,14 @@ initial_node_state = NodePath("Idle")
 script = ExtResource("4_kufk8")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
-slow_down_speed = 200
+slow_down_speed = 600
 
 [node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
 script = ExtResource("5_trwqq")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 speed = 120
+jump_height = 300
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_layer = 4
@@ -213,10 +220,24 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-3, 15)
+position = Vector2(-3, 15.7692)
 shape = SubResource("CircleShape2D_o8i36")
 debug_color = Color(0.639216, 0, 0.211765, 0.419608)
 
+[node name="FlipDetector" type="Node2D" parent="."]
+
+[node name="WallDetector" type="Area2D" parent="FlipDetector"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipDetector/WallDetector"]
+position = Vector2(-30, 0)
+shape = SubResource("RectangleShape2D_iq7ev")
+
+[node name="Bark" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_80jef")
+volume_db = -15.0
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_entered" from="AttackArea" to="StateMachineController" method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="StateMachineController" method="_on_attack_area_body_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

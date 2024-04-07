@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=3 uid="uid://bopuri1xqfcvp"]
+
+[ext_resource type="Script" path="res://enemies/slime/slime.gd" id="1_dymxi"]
+[ext_resource type="Texture2D" uid="uid://blbxldslvumrx" path="res://enemies/slime/slime-Sheet.png" id="1_jhnet"]
+[ext_resource type="AudioStream" uid="uid://cc2ye261mel6o" path="res://audio/slimeattack.mp3" id="3_3vxki"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0iv4g"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mugbk"]
+radius = 9.5
+
+[sub_resource type="Animation" id="Animation_6fdrb"]
+resource_name = "Fire"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"release_bullet"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7rol4"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rgp5a"]
+_data = {
+"Fire": SubResource("Animation_6fdrb"),
+"Idle": SubResource("Animation_7rol4")
+}
+
+[node name="EnemySlimeCannon" type="StaticBody2D" groups=["Enemy"]]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_dymxi")
+shooting = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("1_jhnet")
+hframes = 8
+vframes = 3
+frame = 8
+region_rect = Rect2(0, 0, 31.7953, 26.5905)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -0.5)
+shape = SubResource("CircleShape2D_0iv4g")
+debug_color = Color(0.745098, 0.462745, 0, 0.419608)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(-16, 0)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-1.5, -2)
+shape = SubResource("CircleShape2D_mugbk")
+debug_color = Color(0.992157, 0, 0.266667, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rgp5a")
+}
+autoplay = "Idle"
+
+[node name="Slime" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_3vxki")
+volume_db = -13.333
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.5, -0.5)
+scale = Vector2(1.35, 0.7)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

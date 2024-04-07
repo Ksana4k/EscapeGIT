@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bcddtlfs48iuf"]
+[gd_scene load_steps=54 format=3 uid="uid://bcddtlfs48iuf"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_3v3ce"]
 [ext_resource type="Texture2D" uid="uid://d2k4fci5v8jbn" path="res://player/kol.png" id="2_lnxqn"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://by76eojr5l7rt" path="res://player/Character_Jump.png" id="4_kxc8n"]
 [ext_resource type="Texture2D" uid="uid://c8rui5vwhmptp" path="res://player/MainCharacterRun.png" id="4_wurrx"]
 [ext_resource type="Texture2D" uid="uid://ctyplmgnrkiwh" path="res://player/Run_with_Gun-Sheet.png" id="6_6f2g4"]
-[ext_resource type="Texture2D" uid="uid://clipqg546wkp6" path="res://player/maincharacter.webp" id="7_onnhb"]
+[ext_resource type="Texture2D" uid="uid://bgbqns6h0e6e1" path="res://player/shootstand.png" id="7_fifnh"]
+[ext_resource type="AudioStream" uid="uid://uuxhlmf4nwnh" path="res://audio/gunshot.mp3" id="8_vq3ad"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g77af"]
 shader = ExtResource("2_tl0hs")
@@ -137,9 +138,37 @@ region = Rect2(288, 0, 48, 48)
 atlas = ExtResource("6_6f2g4")
 region = Rect2(336, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fj73b"]
-atlas = ExtResource("7_onnhb")
-region = Rect2(432, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_oflgx"]
+atlas = ExtResource("7_fifnh")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gh43r"]
+atlas = ExtResource("7_fifnh")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2igd"]
+atlas = ExtResource("7_fifnh")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28ge2"]
+atlas = ExtResource("7_fifnh")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m44r3"]
+atlas = ExtResource("7_fifnh")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bjee"]
+atlas = ExtResource("7_fifnh")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1c3c"]
+atlas = ExtResource("7_fifnh")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3edv3"]
+atlas = ExtResource("7_fifnh")
+region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w5ty4"]
 atlas = ExtResource("6_6f2g4")
@@ -281,11 +310,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fj73b")
+"texture": SubResource("AtlasTexture_oflgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gh43r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2igd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28ge2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m44r3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bjee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1c3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3edv3")
 }],
 "loop": false,
 "name": &"shoot_stand",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -305,21 +355,24 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n4dw8"]
-radius = 8.0
+radius = 9.16667
 height = 34.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tdvsr"]
+height = 35.0001
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(1.2, 1.2)
 collision_layer = 2
 script = ExtResource("1_3v3ce")
+shoot_cd = 0.5
+hold_gun_time = 0.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_g77af")
 position = Vector2(0, -18.5)
 sprite_frames = SubResource("SpriteFrames_6750a")
-animation = &"fall"
+animation = &"shoot_run"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -327,7 +380,7 @@ position = Vector2(0, -17)
 shape = SubResource("CapsuleShape2D_n4dw8")
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(10, -20)
+position = Vector2(10, -30)
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -344,6 +397,10 @@ scale = Vector2(0.5, 0.5)
 
 [node name="CrosshairTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="GunShot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_vq3ad")
+volume_db = -30.0
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="timeout" from="CrosshairTimer" to="." method="_on_crosshair_timer_timeout"]

@@ -1,0 +1,122 @@
+[gd_scene load_steps=13 format=3 uid="uid://b4sfl7t28cru2"]
+
+[ext_resource type="Texture2D" uid="uid://ceug6tej0uk7v" path="res://enemies/slime/slimebulletsheet.png" id="1_nw5l2"]
+[ext_resource type="Script" path="res://enemies/slime/slime_bullet.gd" id="2_xlq2c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0jjr"]
+atlas = ExtResource("1_nw5l2")
+region = Rect2(0, 0, 480, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uau2"]
+atlas = ExtResource("1_nw5l2")
+region = Rect2(480, 0, 480, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqmpj"]
+atlas = ExtResource("1_nw5l2")
+region = Rect2(960, 0, 480, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqamj"]
+atlas = ExtResource("1_nw5l2")
+region = Rect2(1440, 0, 480, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3xm1"]
+atlas = ExtResource("1_nw5l2")
+region = Rect2(1920, 0, 480, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b7jd"]
+atlas = ExtResource("1_nw5l2")
+region = Rect2(2400, 0, 480, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ywx0y"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0jjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uau2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqmpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqamj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3xm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8b7jd")
+}],
+"loop": true,
+"name": &"shot",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ioads"]
+radius = 100.0
+
+[sub_resource type="Animation" id="Animation_wnbbc"]
+resource_name = "Hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SlimeBullet:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xsylg"]
+_data = {
+"Hit": SubResource("Animation_wnbbc")
+}
+
+[node name="SlimeBullet" type="Node2D" groups=["Enemy"]]
+script = ExtResource("2_xlq2c")
+
+[node name="SlimeBullet" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, 0)
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_ywx0y")
+animation = &"shot"
+frame_progress = 0.314523
+
+[node name="Area2D" type="Area2D" parent="SlimeBullet"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlimeBullet/Area2D"]
+position = Vector2(-120, 0)
+shape = SubResource("CircleShape2D_ioads")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xsylg")
+}
+
+[connection signal="body_entered" from="SlimeBullet/Area2D" to="." method="_on_area_2d_body_entered"]

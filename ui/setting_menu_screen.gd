@@ -5,8 +5,8 @@ extends CanvasLayer
 
 var window_modes : Dictionary = {
 "Fullscreen" : DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN, 
-"Windowed" : DisplayServer.WINDOW_MODE_WINDOWED, 
-"Window Maximazed" : DisplayServer.WINDOW_MODE_MAXIMIZED }
+"Windowed" : DisplayServer.WINDOW_MODE_WINDOWED }
+#"Window Maximazed" : DisplayServer.WINDOW_MODE_MAXIMIZED
 
 var resolutions : Dictionary = {
 "320x180" : Vector2i(320, 180), 
@@ -42,3 +42,4 @@ func _on_resolution_option_button_item_selected(index):
 func _on_main_menu_button_pressed():
 	SettingsManager.save_settings()
 	queue_free()
+

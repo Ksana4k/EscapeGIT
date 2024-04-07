@@ -1,12 +1,13 @@
-[gd_scene load_steps=36 format=3 uid="uid://bmj7of6qq68m3"]
+[gd_scene load_steps=37 format=3 uid="uid://bmj7of6qq68m3"]
 
-[ext_resource type="Script" path="res://enemies/wolf/enemy_wolf.gd" id="1_2yubg"]
+[ext_resource type="Script" path="res://enemies/wolf/enemy_zombie_wolfai.gd" id="1_mafoy"]
 [ext_resource type="Texture2D" uid="uid://j73c87wttvjd" path="res://enemies/wolf/ZombieTileset Mirror.png" id="2_bwvg4"]
 [ext_resource type="Script" path="res://enemies/wolf/gravity.gd" id="3_vas0j"]
 [ext_resource type="Script" path="res://enemies/wolf/state_machine_controller.gd" id="4_iah8t"]
 [ext_resource type="Script" path="res://scripts/state_machine/node_finite_state_machine.gd" id="5_1rqay"]
 [ext_resource type="Script" path="res://enemies/wolf/idle_state.gd" id="6_d7fca"]
-[ext_resource type="Script" path="res://enemies/wolf/attack_state.gd" id="7_fui01"]
+[ext_resource type="Script" path="res://enemies/wolf/attack_state_zombie.gd" id="7_w1h8t"]
+[ext_resource type="AudioStream" uid="uid://feomunhm3r14" path="res://audio/zombiesound.mp3" id="8_hbewl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jiper"]
 atlas = ExtResource("2_bwvg4")
@@ -204,16 +205,16 @@ radius = 9.0
 height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ufbk"]
-radius = 57.0088
+radius = 77.558
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_otng0"]
 height = 26.0
 
-[node name="EnemyWolf" type="CharacterBody2D" groups=["Enemy"]]
+[node name="EnemyZombieTracker" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 3
-script = ExtResource("1_2yubg")
+script = ExtResource("1_mafoy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
@@ -222,7 +223,6 @@ animation = &"run"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_fnr7t")
 
@@ -246,13 +246,12 @@ animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 slow_down_speed = 200
 
 [node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
-script = ExtResource("7_fui01")
+script = ExtResource("7_w1h8t")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
-speed = 100
+speed = 80
 
 [node name="AttackArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 4
 collision_mask = 2
 monitorable = false
@@ -262,7 +261,6 @@ shape = SubResource("CircleShape2D_6ufbk")
 debug_color = Color(0.968627, 0, 0.470588, 0.419608)
 
 [node name="Hurtbox" type="Area2D" parent="."]
-visible = false
 position = Vector2(1, -17)
 collision_layer = 4
 collision_mask = 2
@@ -272,6 +270,11 @@ position = Vector2(0, 16)
 shape = SubResource("CapsuleShape2D_otng0")
 debug_color = Color(0.639216, 0, 0.211765, 0.419608)
 
+[node name="Growl" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_hbewl")
+volume_db = -2.667
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_entered" from="AttackArea" to="StateMachineController" method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="StateMachineController" method="_on_attack_area_body_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -1,0 +1,113 @@
+[gd_scene load_steps=15 format=3 uid="uid://b8upscd8bc30s"]
+
+[ext_resource type="Texture2D" uid="uid://16ebauhe3slk" path="res://platform/CROPPEDTILESET/bear_trap.webp" id="1_770wy"]
+[ext_resource type="Script" path="res://platform/bear_trap.gd" id="1_q2fyc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uo4p"]
+atlas = ExtResource("1_770wy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5gda"]
+atlas = ExtResource("1_770wy")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gwa2"]
+atlas = ExtResource("1_770wy")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vt1em"]
+atlas = ExtResource("1_770wy")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33bdt"]
+atlas = ExtResource("1_770wy")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u5ly"]
+atlas = ExtResource("1_770wy")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irsvl"]
+atlas = ExtResource("1_770wy")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qck77"]
+atlas = ExtResource("1_770wy")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bs4y"]
+atlas = ExtResource("1_770wy")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbfnl"]
+atlas = ExtResource("1_770wy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w1vrc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uo4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5gda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gwa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vt1em")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33bdt")
+}],
+"loop": false,
+"name": &"bite",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u5ly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irsvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qck77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bs4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbfnl")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbjx1"]
+size = Vector2(42, 18)
+
+[node name="BearTrap" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_q2fyc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -20)
+sprite_frames = SubResource("SpriteFrames_w1vrc")
+animation = &"open"
+autoplay = "open"
+frame = 4
+frame_progress = 1.0
+
+[node name="BiteArea2D" type="Area2D" parent="."]
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BiteArea2D"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_hbjx1")
+debug_color = Color(0.745098, 0.32549, 0.831373, 0.419608)
+
+[connection signal="body_entered" from="BiteArea2D" to="." method="_on_bite_area_2d_body_entered"]
