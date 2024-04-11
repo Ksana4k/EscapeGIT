@@ -31,6 +31,7 @@ func restart_game():
 	continue_game()
 	get_tree().reload_current_scene()
 	full_heal_player()
+	ClueManager.current_clue = 0
 
 func main_menu():
 	var main_menu_screen_instance = main_menu_screen.instantiate()

@@ -35,5 +35,11 @@ func _on_hitbox_area_entered(area):
 
 
 func _on_hitbox_body_entered(body):
+	if body.is_in_group("Boss"):
+		print("boss")
+		body.take_damage()
+		bullet_impact()
+	
 	print("bullet body entered")
+	
 	bullet_impact()

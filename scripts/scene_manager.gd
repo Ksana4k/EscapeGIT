@@ -5,7 +5,7 @@ var scene_transition_screen = preload("res://ui/scene_transition/loading_screen.
 var scenes : Dictionary = { 
 "Level1" : "res://levels/level_1.tscn", 
 "Level2" : "res://levels/level_2.tscn",
-#"Level3" :,
+"Level3" : "res://levels/level_3.tscn",
 "MainMenu" : "res://ui/main_menu_screen.tscn"
 }
 
@@ -13,6 +13,8 @@ func transition_to_scene(level : String):
 	var scene_path : String = scenes.get(level)
 	
 	if scene_path != null:
+		ClueManager.current_clue = 0
+		
 		var scene_transition_screen_instance = scene_transition_screen.instantiate()
 		get_tree().get_root().add_child(scene_transition_screen_instance)
 		await get_tree().create_timer(3.0).timeout

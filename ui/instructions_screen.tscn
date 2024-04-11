@@ -506,7 +506,7 @@ theme = ExtResource("2_snvfa")
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "wasd = move"
+text = "a d = move"
 
 [node name="Label2" type="Label" parent="MarginContainer2"]
 layout_mode = 2
@@ -581,9 +581,8 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="ReturnButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_snvfa")
 text = "Return"
 
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

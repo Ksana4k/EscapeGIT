@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://caoda3512f0qj"]
+
+[ext_resource type="Script" path="res://enemies/death/minion_spawner.gd" id="1_nxjby"]
+[ext_resource type="PackedScene" uid="uid://cogpaj4n8i7r3" path="res://enemies/death/minion.tscn" id="2_7iyxg"]
+
+[node name="MinionSpawner" type="Node2D"]
+script = ExtResource("1_nxjby")
+minion_node = ExtResource("2_7iyxg")

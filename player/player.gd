@@ -68,7 +68,7 @@ func _input(event : InputEvent):
 	if(event.is_action_pressed("down")) && is_on_floor():
 		position.y += 1
 		#for one way
-		current_state = State.Jump
+		#current_state = State.Jump
 
 func player_falling(delta : float):
 	if !is_on_floor():

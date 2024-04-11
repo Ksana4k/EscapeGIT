@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl17l07fpmr1s"]
+
+[ext_resource type="PackedScene" uid="uid://th311ou7fdk5" path="res://platform/blocks.tscn" id="1_wfrqo"]
+
+[node name="blocksss" type="Node2D"]
+
+[node name="Blocks" parent="." instance=ExtResource("1_wfrqo")]
+position = Vector2(-239, 0)
+
+[node name="Blocks2" parent="." instance=ExtResource("1_wfrqo")]
+position = Vector2(-143, 0)
+
+[node name="Blocks3" parent="." instance=ExtResource("1_wfrqo")]
+position = Vector2(-47, 0)
+
+[node name="Blocks4" parent="." instance=ExtResource("1_wfrqo")]
+position = Vector2(49, 0)
+
+[node name="Blocks5" parent="." instance=ExtResource("1_wfrqo")]
+position = Vector2(145, 0)
+
+[node name="Blocks6" parent="." instance=ExtResource("1_wfrqo")]
+position = Vector2(241, 0)

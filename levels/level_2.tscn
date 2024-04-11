@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://c26mttlakfpb4"]
+[gd_scene load_steps=26 format=3 uid="uid://c26mttlakfpb4"]
 
 [ext_resource type="PackedScene" uid="uid://cew1wiqmaahlk" path="res://levels/base_level.tscn" id="1_kn1sd"]
 [ext_resource type="PackedScene" uid="uid://bdhthaw8jrvmq" path="res://background/demonwoods_parallax_background.tscn" id="2_3vo1r"]
 [ext_resource type="PackedScene" uid="uid://bxrd3n05hvlx4" path="res://ui/game_screen.tscn" id="3_erlrj"]
 [ext_resource type="PackedScene" uid="uid://24imki5ex5t7" path="res://platform/one_way5.tscn" id="4_7rfwg"]
 [ext_resource type="PackedScene" uid="uid://cn3gogr2ac6m6" path="res://platform/jump_pad.tscn" id="5_12dya"]
+[ext_resource type="Theme" uid="uid://djeu7e1vst4qd" path="res://ui/theme/game_theme.tres" id="5_jjxol"]
 [ext_resource type="PackedScene" uid="uid://c4dslwluvcbw" path="res://platform/one_way1.tscn" id="5_l3y7v"]
 [ext_resource type="Texture2D" uid="uid://biw0nns8qlx48" path="res://platform/CROPPEDTILESET/wood4.png" id="6_iijo2"]
 [ext_resource type="PackedScene" uid="uid://di0fa462ecacn" path="res://platform/one_way4.tscn" id="8_8vwd8"]
@@ -168,19 +169,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ClueDisplay/MarginContainer" index="0"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="ClueDisplay/MarginContainer/VBoxContainer" index="0"]
-position = Vector2(-14, 11)
+[node name="Sprite2D" type="Sprite2D" parent="ClueDisplay/MarginContainer" index="0"]
+position = Vector2(200, 15)
 texture = ExtResource("10_30wax")
 hframes = 6
 vframes = 7
 
-[node name="Label" type="Label" parent="ClueDisplay/MarginContainer/VBoxContainer" index="1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ClueDisplay/MarginContainer" index="1"]
 layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="ClueDisplay/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme = ExtResource("5_jjxol")
 text = "0/4
 "
 
@@ -419,7 +425,7 @@ debug_color = Color(0.957553, 3.56168e-06, 0.531949, 0.42)
 
 [node name="ClueDoor" parent="Door" index="0" instance=ExtResource("16_38vv4")]
 position = Vector2(1041, -1569)
-next_scene = "MainMenu"
+next_scene = "Level3"
 need_clues = 4
 
 [node name="Clue" parent="Door" index="1" instance=ExtResource("12_qui0t")]

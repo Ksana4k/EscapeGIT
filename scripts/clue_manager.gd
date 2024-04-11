@@ -21,3 +21,6 @@ func increase_clue(clue_amount : int):
 	
 	print("increase clue called " , current_clue)
 	on_clue_changed.emit(current_clue)
+
+func reset_clue():
+	current_clue = 0

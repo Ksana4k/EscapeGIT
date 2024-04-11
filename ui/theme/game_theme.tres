@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://djeu7e1vst4qd"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://djeu7e1vst4qd"]
 
 [ext_resource type="FontFile" uid="uid://bdt01yof1pjsj" path="res://ui/theme/GravityRegular5.ttf" id="1_e3vcc"]
 
@@ -76,6 +76,24 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ga8ht"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iagjt"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
 [resource]
 Button/font_sizes/font_size = 12
 Button/fonts/font = ExtResource("1_e3vcc")
@@ -92,3 +110,7 @@ MarginContainer/constants/margin_top = 10
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_gquoc")
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_win54")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_mihxv")
+ProgressBar/font_sizes/font_size = 13
+ProgressBar/fonts/font = ExtResource("1_e3vcc")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ga8ht")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_iagjt")
