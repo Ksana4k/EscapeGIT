@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://enemies/slime/slime.gd" id="1_dymxi"]
 [ext_resource type="Texture2D" uid="uid://blbxldslvumrx" path="res://enemies/slime/slime-Sheet.png" id="1_jhnet"]
-[ext_resource type="AudioStream" uid="uid://cc2ye261mel6o" path="res://audio/slimeattack.mp3" id="3_3vxki"]
+[ext_resource type="AudioStream" uid="uid://cc2ye261mel6o" path="res://audio/enemy/slimeattack.mp3" id="3_3vxki"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0iv4g"]
 radius = 7.0

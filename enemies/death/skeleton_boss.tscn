@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://extmgjow1xyh"]
+[gd_scene load_steps=88 format=3 uid="uid://extmgjow1xyh"]
 
 [ext_resource type="Script" path="res://enemies/death/skeleton_boss.gd" id="1_8q1a4"]
 [ext_resource type="Texture2D" uid="uid://cvdav22kt0flg" path="res://enemies/death/attacking.png" id="1_iufuh"]
@@ -16,6 +16,10 @@
 [ext_resource type="Script" path="res://enemies/death/SpawnMinion.gd" id="13_2kh0c"]
 [ext_resource type="PackedScene" uid="uid://cogpaj4n8i7r3" path="res://enemies/death/minion.tscn" id="14_nwj34"]
 [ext_resource type="Script" path="res://enemies/death/Death.gd" id="15_msq5e"]
+[ext_resource type="AudioStream" uid="uid://baw1ud3d2t8um" path="res://audio/boss/swing_1.mp3" id="17_fa26a"]
+[ext_resource type="AudioStream" uid="uid://dn8tm650vbkn4" path="res://audio/boss/swing_2.mp3" id="18_fnu7m"]
+[ext_resource type="AudioStream" uid="uid://ybvfa36iwr1l" path="res://audio/boss/whoosh_tp.mp3" id="19_8o4ll"]
+[ext_resource type="AudioStream" uid="uid://btjyqyqnjtsx1" path="res://audio/boss/minion_spawn_cut.mp3" id="20_fj581"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tld2q"]
 atlas = ExtResource("1_iufuh")
@@ -459,6 +463,54 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sounds/Attack1Sound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sounds/Attack2Sound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sounds/TeleportSound:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sounds/SpawnSound:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_rv60a"]
 resource_name = "attack_1"
@@ -505,6 +557,18 @@ tracks/2/keys = {
 "method": &"end_of_hit"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sounds/Attack1Sound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_lywaw"]
 resource_name = "attack_2"
@@ -550,6 +614,18 @@ tracks/2/keys = {
 "args": [],
 "method": &"end_of_hit"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sounds/Attack2Sound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_wn1m3"]
@@ -697,6 +773,18 @@ tracks/2/keys = {
 "method": &"teleport"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sounds/TeleportSound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_mj6wb"]
 resource_name = "summon"
@@ -739,6 +827,18 @@ tracks/2/keys = {
 "args": [],
 "method": &"spawn"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sounds/SpawnSound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_soq6u"]
@@ -907,6 +1007,23 @@ minion_node = ExtResource("14_nwj34")
 
 [node name="Death" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("15_msq5e")
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Attack1Sound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("17_fa26a")
+volume_db = -12.0
+
+[node name="Attack2Sound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("18_fnu7m")
+volume_db = -8.0
+
+[node name="TeleportSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("19_8o4ll")
+
+[node name="SpawnSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("20_fj581")
+volume_db = -20.0
 
 [connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_area_entered"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

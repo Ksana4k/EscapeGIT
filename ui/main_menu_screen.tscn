@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/main_menu_screen.gd" id="1_af0bj"]
 [ext_resource type="Texture2D" uid="uid://dbplbqikv6x2p" path="res://ui/ruincitybg.png" id="1_hqcxi"]
 [ext_resource type="Theme" uid="uid://djeu7e1vst4qd" path="res://ui/theme/game_theme.tres" id="2_035em"]
-[ext_resource type="AudioStream" uid="uid://24ji7ne14g2w" path="res://audio/intromainmenu.mp3" id="4_o8rne"]
+[ext_resource type="AudioStream" uid="uid://24ji7ne14g2w" path="res://audio/misc/intromainmenu.mp3" id="4_1r0e5"]
 
 [sub_resource type="SystemFont" id="SystemFont_3qlv6"]
 font_names = PackedStringArray("Goudy Old Style")
@@ -78,7 +78,7 @@ layout_mode = 2
 text = "EXIT"
 
 [node name="Intro" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_o8rne")
+stream = ExtResource("4_1r0e5")
 volume_db = -10.666
 autoplay = true
 

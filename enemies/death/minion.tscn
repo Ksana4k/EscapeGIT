@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://cogpaj4n8i7r3"]
+[gd_scene load_steps=25 format=3 uid="uid://cogpaj4n8i7r3"]
 
 [ext_resource type="Script" path="res://enemies/death/minion.gd" id="1_jfvqd"]
 [ext_resource type="Texture2D" uid="uid://bqekhebk6wq74" path="res://enemies/death/summonAppear.png" id="1_p4ia5"]
 [ext_resource type="Texture2D" uid="uid://c780v8b40x7l0" path="res://enemies/death/summonDeath.png" id="2_kqkmh"]
 [ext_resource type="Texture2D" uid="uid://bqu5hx0aykd1o" path="res://enemies/death/summonIdle.png" id="2_p42m0"]
+[ext_resource type="AudioStream" uid="uid://dmbbp2to1j787" path="res://audio/boss/minion_spawn.mp3" id="5_q7kkq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fsnva"]
 atlas = ExtResource("2_kqkmh")
@@ -169,6 +170,10 @@ debug_color = Color(0.980392, 0, 0.368627, 0.419608)
 wait_time = 5.0
 one_shot = true
 autostart = true
+
+[node name="SpawnSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_q7kkq")
+volume_db = -6.0
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

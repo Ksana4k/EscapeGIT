@@ -13,7 +13,12 @@ func teleport():
 	if player == null:
 		return
 	
-	owner.position = player.position + Vector2.RIGHT * 40
+	var chance = randi() % 2
+	match chance:
+		0:
+			owner.position = player.position + Vector2.RIGHT * 40
+		1:
+			owner.position = player.position + Vector2.LEFT * 40
  
  
 func transition():

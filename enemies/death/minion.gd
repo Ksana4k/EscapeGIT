@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var player = get_parent().find_child("Player")
 @onready var animation = $AnimatedSprite2D
 @onready var collision_shape_2d = $DamageArea/CollisionShape2D
+@onready var spawn_sound = $SpawnSound
 
 @export var speed : int = 60
 @export var damage_amount : int = 1
@@ -12,6 +13,7 @@ func _ready():
 	await animation.animation_finished
 	set_physics_process(true)
 	animation.play("idle")
+	
  
 func _physics_process(_delta):
 	if player == null:

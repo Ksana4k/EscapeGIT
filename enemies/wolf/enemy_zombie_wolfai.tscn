@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/state_machine/node_finite_state_machine.gd" id="5_1rqay"]
 [ext_resource type="Script" path="res://enemies/wolf/idle_state.gd" id="6_d7fca"]
 [ext_resource type="Script" path="res://enemies/wolf/attack_state_zombie.gd" id="7_w1h8t"]
-[ext_resource type="AudioStream" uid="uid://feomunhm3r14" path="res://audio/zombiesound.mp3" id="8_hbewl"]
+[ext_resource type="AudioStream" uid="uid://feomunhm3r14" path="res://audio/enemy/zombiesound.mp3" id="8_hbewl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jiper"]
 atlas = ExtResource("2_bwvg4")

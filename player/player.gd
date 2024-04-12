@@ -9,6 +9,8 @@ var player_death_effect = preload("res://player/player_death_effect/player_death
 @onready var crosshair = $Crosshair
 @onready var crosshair_timer = $CrosshairTimer
 @onready var gun_shot = $GunShot
+@onready var jump_sound = $JumpSound
+
 
 const GRAVITY : int = 1000
 @export var speed : int = 800
@@ -110,17 +112,20 @@ func player_jump(delta : float):
 	var jump_input : bool = Input.is_action_just_pressed("jump")
 	
 	if is_on_floor() and jump_input:
+		jump_sound.play()
 		current_jump_count = 0
 		velocity.y = jump
 		current_jump_count += 1
 		current_state = State.Jump
 		
 	if !is_on_floor() and jump_input and current_jump_count < jump_count:
+		jump_sound.play()
 		velocity.y = jump
 		current_jump_count += 1
 		current_state = State.Jump
 	
 	if !is_on_floor() and current_state == State.Jump:
+		
 		var direction = input_movement()
 		velocity.x += direction * jump_horizontal_speed * delta
 		velocity.x = clamp(velocity.x, - max_jump_horizontal_speed, max_jump_horizontal_speed)

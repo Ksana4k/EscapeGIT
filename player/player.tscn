@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bcddtlfs48iuf"]
+[gd_scene load_steps=55 format=3 uid="uid://bcddtlfs48iuf"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_3v3ce"]
 [ext_resource type="Texture2D" uid="uid://d2k4fci5v8jbn" path="res://player/kol.png" id="2_lnxqn"]
@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://c8rui5vwhmptp" path="res://player/MainCharacterRun.png" id="4_wurrx"]
 [ext_resource type="Texture2D" uid="uid://ctyplmgnrkiwh" path="res://player/Run_with_Gun-Sheet.png" id="6_6f2g4"]
 [ext_resource type="Texture2D" uid="uid://bgbqns6h0e6e1" path="res://player/shootstand.png" id="7_fifnh"]
-[ext_resource type="AudioStream" uid="uid://uuxhlmf4nwnh" path="res://audio/gunshot.mp3" id="8_vq3ad"]
+[ext_resource type="AudioStream" uid="uid://uuxhlmf4nwnh" path="res://audio/player/gunshot.mp3" id="8_8at47"]
+[ext_resource type="AudioStream" uid="uid://delqfoe8psvpf" path="res://audio/player/jump.mp3" id="9_qp8y0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g77af"]
 shader = ExtResource("2_tl0hs")
@@ -399,7 +400,11 @@ scale = Vector2(0.5, 0.5)
 wait_time = 2.0
 
 [node name="GunShot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_vq3ad")
+stream = ExtResource("8_8at47")
+volume_db = -30.0
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_qp8y0")
 volume_db = -30.0
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
