@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ESCAPE"
-run/main_scene="res://ui/main_menu_screen.tscn"
+run/main_scene="res://ui/logo/logo_screen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.png"
 

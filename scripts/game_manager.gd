@@ -4,10 +4,9 @@ var main_menu_screen = preload("res://ui/main_menu_screen.tscn")
 var pause_menu_screen = preload("res://ui/pause_menu_screen.tscn")
 var game_over_screen = preload("res://ui/game_over_screen.tscn")
 var level_1 = preload("res://levels/level_1.tscn")
+var logo_screen = preload("res://ui/logo/logo_screen.tscn")
 
 func _ready():
-	RenderingServer.set_default_clear_color(Color(0.18,0.10,0.26,1.00))
-	
 	SettingsManager.load_settings()
 
 func start_game():
@@ -17,6 +16,10 @@ func start_game():
 	
 	SceneManager.transition_to_scene("Level1")
 	full_heal_player()
+
+func logo_instance():
+	var logo_instance = logo_screen.instantiate()
+	get_tree().get_root().add_child(logo_instance)
 
 func exit_game():
 	get_tree().quit()
