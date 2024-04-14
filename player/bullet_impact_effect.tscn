@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dfshjxbn4ee37"]
 
 [ext_resource type="Texture2D" uid="uid://ctkiby0mp4dy2" path="res://player/impact.png" id="1_mrawa"]
-[ext_resource type="Script" path="res://BulletImpactEffect.gd" id="2_jooe3"]
+[ext_resource type="Script" path="res://player/BulletImpactEffect.gd" id="2_cpf16"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0iurv"]
 atlas = ExtResource("1_mrawa")
@@ -53,7 +53,7 @@ animation = &"impact"
 autoplay = "impact"
 frame = 4
 frame_progress = 1.0
-script = ExtResource("2_jooe3")
+script = ExtResource("2_cpf16")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.4

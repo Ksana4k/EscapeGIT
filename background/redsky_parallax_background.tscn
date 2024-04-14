@@ -21,3 +21,21 @@ modulate = Color(0.592157, 0.211765, 0.184314, 1)
 
 [node name="Sprite2D" parent="Cloud4" index="0"]
 modulate = Color(0.592157, 0.211765, 0.184314, 1)
+
+[node name="Sprite2D" parent="BG3" index="0"]
+modulate = Color(0.592157, 0.211765, 0.184314, 1)
+
+[node name="Sprite2D" parent="BG4" index="0"]
+modulate = Color(0.592157, 0.211765, 0.184314, 1)
+
+[node name="Sprite2D" parent="Cloud5" index="0"]
+modulate = Color(0.592157, 0.211765, 0.184314, 1)
+
+[node name="Sprite2D" parent="Cloud6" index="0"]
+modulate = Color(0.592157, 0.211765, 0.184314, 1)
+
+[node name="Sprite2D" parent="Cloud7" index="0"]
+modulate = Color(0.592157, 0.211765, 0.184314, 1)
+
+[node name="Sprite2D" parent="Cloud8" index="0"]
+modulate = Color(0.592157, 0.211765, 0.184314, 1)

@@ -50,3 +50,51 @@ motion_mirroring = Vector2(576, 0)
 
 [node name="Sprite2D" type="TextureRect" parent="Cloud4"]
 texture = ExtResource("5_htbuy")
+
+[node name="BG3" type="ParallaxLayer" parent="."]
+position = Vector2(1152, 0)
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(576, 0)
+
+[node name="Sprite2D" type="TextureRect" parent="BG3"]
+texture = ExtResource("1_6e5am")
+
+[node name="BG4" type="ParallaxLayer" parent="."]
+position = Vector2(1152, -324)
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(576, 0)
+
+[node name="Sprite2D" type="TextureRect" parent="BG4"]
+texture = ExtResource("1_6e5am")
+
+[node name="Cloud5" type="ParallaxLayer" parent="."]
+position = Vector2(1152, 0)
+motion_scale = Vector2(0.9, 1)
+motion_mirroring = Vector2(576, 0)
+
+[node name="Sprite2D" type="TextureRect" parent="Cloud5"]
+texture = ExtResource("2_328e2")
+
+[node name="Cloud6" type="ParallaxLayer" parent="."]
+position = Vector2(1152, 0)
+motion_scale = Vector2(0.9, 1)
+motion_mirroring = Vector2(576, 0)
+
+[node name="Sprite2D" type="TextureRect" parent="Cloud6"]
+texture = ExtResource("3_0a4nr")
+
+[node name="Cloud7" type="ParallaxLayer" parent="."]
+position = Vector2(1152, 0)
+motion_scale = Vector2(0.9, 1)
+motion_mirroring = Vector2(576, 0)
+
+[node name="Sprite2D" type="TextureRect" parent="Cloud7"]
+texture = ExtResource("4_w5isk")
+
+[node name="Cloud8" type="ParallaxLayer" parent="."]
+position = Vector2(1152, 0)
+motion_scale = Vector2(0.9, 1)
+motion_mirroring = Vector2(576, 0)
+
+[node name="Sprite2D" type="TextureRect" parent="Cloud8"]
+texture = ExtResource("5_htbuy")

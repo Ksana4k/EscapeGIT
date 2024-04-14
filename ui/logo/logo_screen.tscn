@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cpu8rib1tc2au"]
 
 [ext_resource type="Script" path="res://ui/logo/logo_screen.gd" id="1_23e23"]
-[ext_resource type="Texture2D" uid="uid://1pc33ocg1wn5" path="res://ui/logo/1_GAME_LOGO_.png" id="1_l57j8"]
+[ext_resource type="Texture2D" uid="uid://jn62gf80kkrl" path="res://ui/logo/1logoblack.png" id="2_rjx2t"]
 
 [sub_resource type="Animation" id="Animation_22hof"]
 resource_name = "start"
@@ -46,14 +46,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer"]
-position = Vector2(240, 130)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_l57j8")
+texture = ExtResource("2_rjx2t")
 
 [node name="ColorRect2" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
