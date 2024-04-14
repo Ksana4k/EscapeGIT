@@ -56,7 +56,6 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_l57j8")
 
 [node name="ColorRect2" type="ColorRect" parent="MarginContainer"]
-self_modulate = Color(1, 1, 1, 5.96046e-08)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 

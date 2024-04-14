@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var progress_bar = $UI/MarginContainer/VBoxContainer/HBoxContainer/ProgressBar
 @onready var attack_area = $AttackArea
 @onready var damage_area = $DamageArea
+@onready var collision = $CollisionShape2D
 
 var direction : Vector2
 
@@ -16,6 +17,7 @@ var health: = 15:
 		health = value
 		progress_bar.value = value
 		if value <= 0:
+			collision.set_deferred("disabled", true)
 			damage_area.monitoring = false
 			progress_bar.visible = false
 			find_child("FiniteStateMachine").change_state("Death")
