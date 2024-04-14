@@ -122,7 +122,7 @@ position = Vector2(880, -368)
 [node name="GameScreen" parent="." index="9" instance=ExtResource("9_tbti5")]
 
 [node name="SkeletonBoss" parent="." index="10" instance=ExtResource("10_xpxxx")]
-position = Vector2(616, -17)
+position = Vector2(805, -212)
 speed = 120
 
 [node name="ClueDoor" parent="." index="11" instance=ExtResource("11_m20pc")]
