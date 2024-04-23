@@ -13,7 +13,7 @@ func exit():
 	owner.set_physics_process(false)
 
 func transition():
-	if owner.direction.length() < 50:
+	if owner.direction.length() < 60:
 		get_parent().change_state("Attack")
 	if owner.direction.length() > 100 and owner.direction.length() < 1000:
 		var chance = randi() % 2

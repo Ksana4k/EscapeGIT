@@ -6,7 +6,8 @@ var scenes : Dictionary = {
 "Level1" : "res://levels/level_1.tscn", 
 "Level2" : "res://levels/level_2.tscn",
 "Level3" : "res://levels/level_3.tscn",
-"MainMenu" : "res://ui/main_menu_screen.tscn"
+"MainMenu" : "res://ui/main_menu_screen.tscn",
+"End" : "res://ui/end/end_screen.tscn"
 }
 
 func transition_to_scene(level : String):

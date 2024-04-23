@@ -1,0 +1,159 @@
+[gd_scene load_steps=15 format=3 uid="uid://bodux4jlrpfdb"]
+
+[ext_resource type="Theme" uid="uid://djeu7e1vst4qd" path="res://ui/theme/game_theme.tres" id="1_b0rjf"]
+[ext_resource type="Script" path="res://ui/end/end_screen.gd" id="1_wigna"]
+[ext_resource type="Texture2D" uid="uid://dlcjc77o6rhi3" path="res://enemies/zombie/ZombieTileset.png" id="2_4qaq1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hym10"]
+atlas = ExtResource("2_4qaq1")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mop78"]
+atlas = ExtResource("2_4qaq1")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpxja"]
+atlas = ExtResource("2_4qaq1")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a605t"]
+atlas = ExtResource("2_4qaq1")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chlg5"]
+atlas = ExtResource("2_4qaq1")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m27ii"]
+atlas = ExtResource("2_4qaq1")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bo7it"]
+atlas = ExtResource("2_4qaq1")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2be5"]
+atlas = ExtResource("2_4qaq1")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0veda"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hym10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mop78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpxja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a605t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chlg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m27ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bo7it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2be5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_b3dm1"]
+resource_name = "end"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/AnimatedSprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"main_menu"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ncg5n"]
+_data = {
+"end": SubResource("Animation_b3dm1")
+}
+
+[node name="EndScreen" type="CanvasLayer"]
+script = ExtResource("1_wigna")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_b0rjf")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+text = "END."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(280, 131)
+sprite_frames = SubResource("SpriteFrames_0veda")
+autoplay = "default"
+frame_progress = 0.371023
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ncg5n")
+}
+autoplay = "end"

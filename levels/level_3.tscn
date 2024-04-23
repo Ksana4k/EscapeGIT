@@ -127,7 +127,7 @@ speed = 120
 
 [node name="ClueDoor" parent="." index="11" instance=ExtResource("11_m20pc")]
 position = Vector2(608, -192)
-next_scene = "MainMenu"
+next_scene = "End"
 need_clues = 1
 
 [connection signal="body_entered" from="PoisonArea/Area2D" to="PoisonArea" method="_on_area_2d_body_entered"]
